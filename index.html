@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Login y Tarjetas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #515151;
+        }
+
+        #login {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        #content {
+            display: none;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            width: 200px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Login -->
+    <div id="login">
+        <h2>Inicio de Sesión</h2>
+        <input type="password" id="password" placeholder="Ingresa la clave" />
+        <button id="loginBtn">Entrar</button>
+        <p id="error" style="color: red; display: none;">Clave incorrecta</p>
+    </div>
+
+    <!-- Contenido -->
+    <div id="content">
+        <div class="card"  onclick="window.location.href='https://kdrive.infomaniak.com/app/share/866432/d38520a5-9b9d-4816-a6b0-522fc224af97'">Estela</div>
+        <div class="card" onclick="window.location.href='https://example.com/page2'">Tarjeta 2</div>
+        <div class="card" onclick="window.location.href='https://example.com/page3'">Tarjeta 3</div>
+    </div>
+
+    <script>
+        // Clave correcta
+        const CORRECT_PASSWORD = "clave123";
+
+        // Referencias a elementos
+        const loginSection = document.getElementById('login');
+        const contentSection = document.getElementById('content');
+        const loginBtn = document.getElementById('loginBtn');
+        const passwordInput = document.getElementById('password');
+        const errorText = document.getElementById('error');
+
+        // Evento del botón de login
+        loginBtn.addEventListener('click', () => {
+            const inputPassword = passwordInput.value;
+
+            if (inputPassword === CORRECT_PASSWORD) {
+                // Mostrar contenido y ocultar login
+                loginSection.style.display = 'none';
+                contentSection.style.display = 'flex';
+            } else {
+                // Mostrar mensaje de error
+                errorText.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
